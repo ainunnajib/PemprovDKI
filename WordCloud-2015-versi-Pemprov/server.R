@@ -21,8 +21,8 @@ function(input, output, session) {
   
   output$plot <- renderPlot({
     load("vv.RData")
-    wordcloud_rep(names(vv), vv, scale=c(4,0.5),
-                  min.freq = input$freq, max.words=input$max,
+    wordcloud_rep(names(vv), vv, scale=c(4, 0.5),
+                  min.freq = input$budget, max.words=input$max,
                   colors=brewer.pal(8, "Dark2"))
   })
 }
