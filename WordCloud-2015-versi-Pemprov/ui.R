@@ -5,6 +5,7 @@ fluidPage(
   
   sidebarLayout(
     sidebarPanel(
+#      numericInput("budget", "Minimum Total Budget containing the word (juta):", value = 100, min = 0, step = 100),
       sliderInput("budget",
                   "Minimum Total Budget containing the word (juta):",
                   min = 1,  max = 1000000, value = 100),
