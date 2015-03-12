@@ -20,9 +20,9 @@ shinyServer(function(input, output) {
     data[ , PembahasanDPRD.Baru.P := gsub(' ', '#', PembahasanDPRD.Baru.P)]
     data
   }
-  , options = list(
-    columnDefs = list(list(targets = c(3, 4, 5, 6), type = "num-fmt"))
-  )
+  #, options = list(
+  #  columnDefs = list(list(targets = c(3, 4, 5, 6), type = "num-fmt"))
+  #)
   )
   
   output$total <- renderText({ 
