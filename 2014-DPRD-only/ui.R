@@ -18,14 +18,18 @@ shinyUI(
                          "SKPD:", 
                          c("All", 
                            unique(as.character(DPRDonly$SKPD))))
+      ),
+      column(4, 
+             textInput("filter", "Filter Kegiatan", value = "")
       )
     ),
     
-    fluidRow( textInput("filter", "Filter Kegiatan", value = ""), 
-              h4(paste("Total PembahasanDPRD.Baru.P (sesuai filter) = Rp. "),
-                 textOutput("total", inline = TRUE)),
-              downloadButton('downloadData', 'Download') ),
-    fluidRow(  ),
+    fluidRow( column(8, 
+                     h4(paste("Total PembahasanDPRD.Baru.P (sesuai filter) = Rp. "),
+                        textOutput("total", inline = TRUE))),
+              column(8, downloadButton('downloadData', 'Download')) 
+            ),
+
     fluidRow(
       dataTableOutput(outputId="table")
     )    
