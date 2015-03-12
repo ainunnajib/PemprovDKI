@@ -16,9 +16,9 @@ shinyServer(function(input, output) {
     }
     data
   }
-  , options = list(
-    columnDefs = list(list(targets = c(4, 5, 6, 7), type = "num-fmt"))
-  )
+  #, options = list(
+  #  columnDefs = list(list(targets = c(4, 5, 6, 7), type = "num-fmt"))
+  #)
   )
   
   output$total <- renderText({ 
