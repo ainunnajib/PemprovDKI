@@ -15,7 +15,11 @@ shinyServer(function(input, output) {
       data <- data[SKPD == input$SKPD]
     }
     data
-  })
+  }
+  , options = list(
+    columnDefs = list(list(targets = c(4, 5, 6, 7), type = "num-fmt"))
+  )
+  )
   
   output$total <- renderText({ 
     data <- DPRDonly[grep(filter(), Kegiatan, ignore.case = TRUE)]
