@@ -14,6 +14,10 @@ shinyServer(function(input, output) {
     if (input$SKPD != "All"){
       data <- data[SKPD == input$SKPD]
     }
+    data[ , Perubahan.Baru := gsub(' ', '#', Perubahan.Baru)]
+    data[ , PembahasanDPRD.Tambah.P := gsub(' ', '#', PembahasanDPRD.Tambah.P)]
+    data[ , PembahasanDPRD.Kurang.P := gsub(' ', '#', PembahasanDPRD.Kurang.P)]
+    data[ , PembahasanDPRD.Baru.P := gsub(' ', '#', PembahasanDPRD.Baru.P)]
     data
   }
   , options = list(
