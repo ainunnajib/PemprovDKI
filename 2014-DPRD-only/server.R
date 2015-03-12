@@ -6,21 +6,41 @@ shinyServer(function(input, output) {
   filter <- reactive({ input$filter })
   
   output$table <- renderDataTable({
-    DPRDonly[grep(filter(), Kegiatan, ignore.case = TRUE)]
+    data <- DPRDonly[grep(filter(), Kegiatan, ignore.case = TRUE)]
+    if (input$Komisi != "All"){
+      data <- data[Komisi == input$Komisi]
+    }
+    if (input$SKPD != "All"){
+      data <- data[SKPD == input$SKPD]
+    }
+    data
   })
   
   output$total <- renderText({ 
+    data <- DPRDonly[grep(filter(), Kegiatan, ignore.case = TRUE)]
+    if (input$Komisi != "All"){
+      data <- data[Komisi == input$Komisi]
+    }
+    if (input$SKPD != "All"){
+      data <- data[SKPD == input$SKPD]
+    }
+    
     format(
       sum(as.numeric(
-        gsub('\\.', '',
-             DPRDonly[grep(filter(), Kegiatan, ignore.case = TRUE)]$PembahasanDPRD.Baru.P)),
-        na.rm = TRUE),
+        gsub('\\.', '', data$PembahasanDPRD.Baru.P)), na.rm = TRUE),
       scientific = FALSE, trim = TRUE, big.mark = "."
     )
   })
     
   datasetInput <- reactive({
-    DPRDonly[grep(filter(), Kegiatan, ignore.case = TRUE)]
+    data <- DPRDonly[grep(filter(), Kegiatan, ignore.case = TRUE)]
+    if (input$Komisi != "All"){
+      data <- data[Komisi == input$Komisi]
+    }
+    if (input$SKPD != "All"){
+      data <- data[SKPD == input$SKPD]
+    }
+    data
   })
   
   output$downloadData <- downloadHandler(
